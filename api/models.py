@@ -13,7 +13,7 @@ class Pupil(models.Model):
 
 
 class Contact(models.Model):
-    pupil = models.ForeignKey(Pupil, on_delete=models.CASCADE)
+    pupil = models.OneToOneField(Pupil, on_delete=models.CASCADE)
     phone = models.CharField(max_length=30)
     email = models.CharField(max_length=30, unique=True)
     address = models.CharField(max_length=30, default="")
