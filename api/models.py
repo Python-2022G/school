@@ -13,10 +13,25 @@ class Pupil(models.Model):
 
 
 class Contact(models.Model):
-    pupil = models.OneToOneField(Pupil, on_delete=models.CASCADE)
+    pupil = models.OneToOneField(to=Pupil, on_delete=models.CASCADE)
     phone = models.CharField(max_length=30)
     email = models.CharField(max_length=30, unique=True)
     address = models.CharField(max_length=30, default="")
 
     def __str__(self):
         return self.email
+
+
+class Course(models.Model):
+    name = models.CharField(max_length=30)  # Python Fundamentals
+
+    def __str__(self):
+        return self.name
+
+
+class Group(models.Model):
+    name = models.CharField(max_length=30)  # Python Fundamentals
+    course = models.ForeignKey(to=Course, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
