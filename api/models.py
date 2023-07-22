@@ -32,6 +32,7 @@ class Course(models.Model):
 class Group(models.Model):
     name = models.CharField(max_length=30)  # Python Fundamentals
     course = models.ForeignKey(to=Course, on_delete=models.CASCADE)
+    students = models.ManyToManyField(to=Pupil)
 
     def __str__(self):
         return self.name
